@@ -1,2 +1,2 @@
 # compose-kafka
-Spins up a single broker Kafka cluster
+Docker Compose configuration for single-broker and multi-broker Kafka clusters
