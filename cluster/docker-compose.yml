@@ -11,6 +11,9 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - ./data/zookeeper:/var/lib/zookeeper/data
+      - ./log/zookeeper:/var/lib/zookeeper/log
 
   broker01:
     image: confluentinc/cp-kafka
@@ -33,6 +36,8 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - ./data/broker01:/var/lib/kafka/data
     depends_on:
       - zookeeper
 
@@ -57,6 +62,8 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9102
       KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - ./data/broker02:/var/lib/kafka/data
     depends_on:
       - zookeeper
 
@@ -81,6 +88,8 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_JMX_PORT: 9103
       KAFKA_JMX_HOSTNAME: localhost
+    volumes:
+      - ./data/broker03:/var/lib/kafka/data
     depends_on:
       - zookeeper
 
